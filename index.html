@@ -277,6 +277,49 @@
   .btn.green { --c: #5bb35a; }
   .btn svg { width: 22px; height: 22px; }
 
+  /* ---------- Parking & call ---------- */
+  .parking { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; max-width: 700px; margin: 0 auto; }
+  .ticket {
+    position: relative;
+    display: flex; flex-direction: column; align-items: flex-start; gap: 2px;
+    padding: 20px 20px 20px 96px; min-height: 150px;
+    background: #fffdf6;
+    border-radius: 14px;
+    box-shadow: 0 2px 3px rgba(0,0,0,.06), 0 14px 24px rgba(90,60,20,.13);
+  }
+  .ticket .p {
+    position: absolute; left: 0; top: 0; bottom: 0; width: 74px;
+    display: grid; place-items: center;
+    background: var(--c); color: #fff;
+    font-family: "Paytone One", var(--body); font-size: 40px;
+    border-radius: 14px 0 0 14px;
+    border-right: 3px dashed #fffdf6;
+  }
+  .ticket::before, .ticket::after {
+    content: ""; position: absolute; left: 64px; width: 20px; height: 20px; border-radius: 50%; background: var(--paper);
+  }
+  .ticket::before { top: -10px; }
+  .ticket::after { bottom: -10px; }
+  .ticket h3 { font-family: "Baloo 2", var(--body); font-weight: 800; font-size: 22px; line-height: 1.2; color: var(--c); }
+  .ticket p { font-size: 15px; color: var(--soft-ink); }
+  .btn.sm { margin-top: 10px; padding: 7px 16px; min-height: 40px; font-size: 16px; box-shadow: 2px 3px 0 var(--ink); }
+  .btn.sm svg { width: 18px; height: 18px; }
+
+  .call {
+    max-width: 460px; margin: 44px auto 0; padding: 26px 22px 28px;
+    display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center;
+    background: #e6f5e2;
+    border: 3px dashed #5bb35a;
+    border-radius: 22px 30px 20px 28px / 28px 20px 30px 22px;
+    --tilt: -1deg;
+  }
+  .call-icon { width: 56px; height: 56px; filter: url(#crayon); }
+  .call-title { font-family: var(--hand); font-size: clamp(21px, 5.4vw, 26px); }
+  .call-number {
+    font-family: "Paytone One", var(--body); font-size: clamp(28px, 8vw, 36px); letter-spacing: 1px;
+    color: #3f9a3e; text-decoration: none; margin-bottom: 12px;
+  }
+
   /* ---------- Countdown ---------- */
   .countdown { display: flex; justify-content: center; gap: clamp(10px, 3vw, 22px); flex-wrap: wrap; }
   .cd {
@@ -325,6 +368,7 @@
     .side { scale: .78; }
     .side.l { right: calc(100% - 2px); }
     .side.r { left: calc(100% - 2px); }
+    .parking { grid-template-columns: 1fr; max-width: 380px; }
     .cards { grid-template-columns: 1fr; gap: 30px; max-width: 360px; margin: 0 auto; }
     .card { min-height: 0; }
     .journal { padding: 64px 18px 32px 62px; background-image:
@@ -555,6 +599,52 @@
     </div>
   </section>
 
+  <!-- PARKING & ARRIVAL -->
+  <section>
+    <div class="doodle wiggle" style="top: 14px; left: 6%; width: 64px; height: 32px; color: var(--blue)"><svg><use href="#d-swirl" /></svg></div>
+    <div class="doodle float" style="top: 10px; right: 6%; width: 40px; height: 40px; color: var(--orange); --r: -8deg"><svg><use href="#d-star" /></svg></div>
+
+    <div class="stitle reveal">
+      <h2>Gửi xe ở đâu nhỉ? 🛵
+        <svg viewBox="0 0 300 20" preserveAspectRatio="none" style="color: var(--orange)"><use href="#d-squiggle" /></svg>
+      </h2>
+    </div>
+
+    <div class="parking">
+      <div class="ticket reveal" style="--c: var(--blue); --tilt: -1.5deg">
+        <span class="p">P</span>
+        <h3>TTTM Nowzone</h3>
+        <p>Trung tâm thương mại đối diện trường.</p>
+        <a class="btn sm" style="--c: var(--blue)" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Nowzone%2C%20235%20Nguy%E1%BB%85n%20V%C4%83n%20C%E1%BB%AB%2C%20TP.HCM">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21 C7 15 5 12 5 9 A7 7 0 0 1 19 9 C19 12 17 15 12 21 Z" /><circle cx="12" cy="9" r="2.5" /></svg>
+          Bản đồ
+        </a>
+      </div>
+      <div class="ticket reveal" style="--c: var(--purple); --tilt: 1.2deg">
+        <span class="p">P</span>
+        <h3>THPT Lê Hồng Phong</h3>
+        <p>Trường cấp 3 kế bên.</p>
+        <a class="btn sm" style="--c: var(--purple)" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Tr%C6%B0%E1%BB%9Dng%20THPT%20chuy%C3%AAn%20L%C3%AA%20H%E1%BB%93ng%20Phong%2C%20Nguy%E1%BB%85n%20V%C4%83n%20C%E1%BB%AB%2C%20TP.HCM">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21 C7 15 5 12 5 9 A7 7 0 0 1 19 9 C19 12 17 15 12 21 Z" /><circle cx="12" cy="9" r="2.5" /></svg>
+          Bản đồ
+        </a>
+      </div>
+    </div>
+
+    <div class="call reveal">
+      <svg class="call-icon" viewBox="0 0 64 64" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 8 L26 8 L30 20 L24 25 C27 32 32 37 39 40 L44 34 L56 38 L56 46 C56 52 50 56 44 55 C26 52 12 38 9 20 C8 14 12 8 18 8 Z" fill="#fff" stroke="#5bb35a" stroke-width="4" />
+        <path d="M40 8 C48 9 55 16 56 24 M40 16 C44 17 47 20 48 24" stroke="#f7944d" stroke-width="4" />
+      </svg>
+      <p class="call-title">Tới nơi thì gọi mình nha!</p>
+      <a class="call-number" data-bind="phoneDisplay"></a>
+      <a class="btn green" id="callBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3 H9 L10.5 7.5 L8.5 9 C9.5 11.5 12.5 14.5 15 15.5 L16.5 13.5 L21 15 V18 C21 20 19 21.5 17 21 C10 19.5 4.5 14 3 7 C2.5 5 4 3 6 3 Z" /></svg>
+        Gọi ngay
+      </a>
+    </div>
+  </section>
+
   <!-- COUNTDOWN -->
   <section>
     <div class="doodle wiggle" style="top: 14px; right: 6%; width: 38px; height: 38px; color: var(--pink); --r: 8deg"><svg><use href="#d-star" /></svg></div>
@@ -596,6 +686,7 @@
     address: "ĐHQG TP.HCM · 227 Nguyễn Văn Cừ, Phường Chợ Quán, TP.HCM",
     mapUrl: "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent("Trường Đại học Khoa học Tự nhiên, 227 Nguyễn Văn Cừ, TP.HCM"),
     contact: "Nhắn mình một tiếng nếu bạn đến được nhé!",
+    phone: "0346 624 075",
   };
 
   const start = new Date(INVITE.start);
@@ -615,6 +706,7 @@
     venue: INVITE.venue,
     address: INVITE.address,
     contact: INVITE.contact,
+    phoneDisplay: INVITE.phone,
   };
   document.querySelectorAll("[data-bind]").forEach((el) => { el.textContent = bindings[el.dataset.bind] ?? ""; });
   document.title = `Thiệp mời Lễ Tốt Nghiệp của ${INVITE.name} 🎓`;
@@ -635,6 +727,9 @@
 
   const mapHref = INVITE.mapUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${INVITE.venue}, ${INVITE.address}`)}`;
   document.getElementById("mapBtn").href = mapHref;
+  const telHref = `tel:${INVITE.phone.replace(/\D/g, "")}`;
+  document.getElementById("callBtn").href = telHref;
+  document.querySelector('[data-bind="phoneDisplay"]').href = telHref;
 
   // Ransom-note title
   (() => {
