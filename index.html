@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Thiệp mời Lễ Tốt Nghiệp 🎓</title>
+<meta name="description" content="Lễ Tốt Nghiệp · Class of 2026 · ĐH Khoa học Tự nhiên, ĐHQG TP.HCM · 12:00 Chủ nhật 06/12/2026" />
+<meta property="og:title" content="Thiệp mời Lễ Tốt Nghiệp 🎓" />
+<meta property="og:description" content="Lễ Tốt Nghiệp · Class of 2026 · ĐH Khoa học Tự nhiên, ĐHQG TP.HCM · 12:00 Chủ nhật 06/12/2026" />
+<meta property="og:image" content="assets/poster.png" />
+<meta name="theme-color" content="#f6f0e4" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Itim&family=Mali:wght@400;600;700&family=Paytone+One&family=Sriracha&display=swap&subset=vietnamese" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #f6f0e4;
+    --ink: #3b3a4a;
+    --soft-ink: #6b6878;
+    --red: #e8505b;
+    --orange: #f7944d;
+    --yellow: #f9c934;
+    --green: #7cc77a;
+    --blue: #5fa8e8;
+    --purple: #a77ad8;
+    --pink: #f27aa9;
+    --line: #b9d3ee;
+    --hand: "Sriracha", "Mali", cursive;
+    --body: "Mali", "Itim", system-ui, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+  body {
+    font-family: var(--body);
+    color: var(--ink);
+    background-color: var(--paper);
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .38 0 0 0 0 .3 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+      radial-gradient(ellipse at 20% 0%, #fffaf0 0%, transparent 60%),
+      radial-gradient(ellipse at 100% 100%, #f1e6d2 0%, transparent 55%);
+    background-attachment: fixed;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  body.locked { overflow: hidden; height: 100dvh; }
+
+  svg.defs { position: absolute; width: 0; height: 0; }
+
+  .doodle { position: absolute; pointer-events: none; filter: url(#crayon); }
+  .doodle svg { width: 100%; height: 100%; overflow: visible; }
+  .float { animation: float 6s ease-in-out infinite; }
+  .wiggle { animation: wiggle 3.2s ease-in-out infinite; }
+  .spin { animation: spin 18s linear infinite; }
+
+  @keyframes float { 0%,100% { transform: translateY(0) rotate(var(--r, 0deg)); } 50% { transform: translateY(-10px) rotate(calc(var(--r, 0deg) + 4deg)); } }
+  @keyframes wiggle { 0%,100% { transform: rotate(calc(var(--r, 0deg) - 6deg)); } 50% { transform: rotate(calc(var(--r, 0deg) + 6deg)); } }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ---------- Envelope intro ---------- */
+  .intro {
+    position: fixed; inset: 0; z-index: 50;
+    display: grid; place-items: center;
+    background: inherit;
+    background-color: var(--paper);
+    transition: opacity .8s ease .9s, visibility 0s linear 1.7s;
+    cursor: pointer;
+    padding: 24px;
+  }
+  .intro.open { opacity: 0; visibility: hidden; }
+  .intro-inner { display: grid; justify-items: center; gap: 28px; text-align: center; }
+  .intro-title { font-family: var(--hand); font-size: clamp(26px, 6vw, 38px); line-height: 1.2; }
+  .intro-title span { color: var(--red); }
+  .intro-hint { font-size: 15px; color: var(--soft-ink); animation: pulse 1.6s ease-in-out infinite; }
+  .intro-title, .intro-hint { transition: opacity .3s ease; }
+  .intro.open .intro-title, .intro.open .intro-hint { opacity: 0; }
+  @keyframes pulse { 50% { opacity: .45; transform: scale(.97); } }
+
+  .envelope {
+    position: relative;
+    width: min(78vw, 340px);
+    aspect-ratio: 1.45;
+    filter: drop-shadow(0 14px 18px rgba(80, 60, 30, .18));
+    animation: bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob { 50% { transform: translateY(-8px) rotate(-1.5deg); } }
+  .intro.open .envelope { animation: none; }
+  .env-back, .env-front, .env-flap { position: absolute; inset: 0; }
+  .env-back { background: #f4c98e; border-radius: 8px; }
+  .env-letter {
+    position: absolute; left: 7%; right: 7%; top: 8%; height: 84%; z-index: 1;
+    background: #fffdf7; border-radius: 6px;
+    background-image: repeating-linear-gradient(transparent 0 17px, var(--line) 17px 18px);
+    transition: transform .9s cubic-bezier(.3,1.4,.5,1) .35s;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+    padding: 0 10px; text-align: center; line-height: 1.3;
+    font-family: var(--hand); font-size: 22px; color: var(--red);
+  }
+  .env-letter .to { font-size: 16px; color: var(--soft-ink); }
+  .env-letter .to b { color: var(--blue); font-weight: 400;
+  }
+  .intro.open .env-letter { transform: translateY(-48%); }
+  .env-front {
+    z-index: 2;
+    background:
+      linear-gradient(to top right, #f7d29f 50%, transparent 50.5%) left bottom / 50.5% 100% no-repeat,
+      linear-gradient(to top left, #f9d9aa 50%, transparent 50.5%) right bottom / 50.5% 100% no-repeat;
+    border-radius: 8px;
+  }
+  .env-flap {
+    clip-path: polygon(0 0, 100% 0, 50% 58%);
+    background: #efbd7a;
+    transform-origin: top;
+    transition: transform .5s ease, z-index 0s linear .25s;
+    border-radius: 8px 8px 0 0;
+    z-index: 3;
+  }
+  .intro.open .env-flap { transform: rotateX(180deg); z-index: 0; }
+  .env-seal {
+    position: absolute; left: 50%; top: 52%; z-index: 4;
+    width: 54px; height: 54px; transform: translate(-50%, -50%);
+    transition: opacity .3s;
+  }
+  .intro.open .env-seal { opacity: 0; }
+
+  /* ---------- Layout ---------- */
+  main { position: relative; max-width: 860px; margin: 0 auto; padding: 0 20px 60px; }
+  section { position: relative; padding: 56px 0; }
+
+  .reveal { opacity: 0; transform: translateY(26px) rotate(var(--tilt, 0deg)); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.9,.3,1.2); }
+  .reveal.in { opacity: 1; transform: translateY(0) rotate(var(--tilt, 0deg)); }
+
+  /* ---------- Hero ---------- */
+  .hero { padding-top: 64px; text-align: center; }
+  .eyebrow {
+    font-family: var(--hand); font-size: clamp(18px, 4.2vw, 24px); color: var(--soft-ink);
+    letter-spacing: .5px;
+  }
+  .ransom {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 2px;
+    margin: 18px auto 8px; max-width: 640px;
+  }
+  .ransom .word { display: inline-flex; gap: 2px; margin: 0 8px; }
+  .ransom .ch {
+    display: inline-grid; place-items: center;
+    min-width: 1.15em; padding: .22em .16em .16em;
+    font-size: clamp(32px, 9vw, 62px); line-height: 1.15;
+    box-shadow: 2px 3px 0 rgba(60, 40, 20, .18);
+    transition: transform .25s;
+  }
+  .ransom .ch:hover { transform: translateY(-4px) rotate(0deg) scale(1.08) !important; }
+
+  .name {
+    position: relative; display: inline-block;
+    font-family: var(--hand); font-size: clamp(30px, 8vw, 52px); color: var(--ink);
+    margin-top: 6px;
+  }
+  .name svg { position: absolute; left: -6%; bottom: -10px; width: 112%; height: 22px; filter: url(#crayon); }
+
+  .polaroid-wrap { position: relative; width: min(76vw, 330px); margin: 38px auto 10px; }
+  .polaroid {
+    position: relative;
+    background: #fffef9;
+    padding: 12px 12px 58px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.08), 0 18px 36px rgba(90, 60, 20, .2);
+    transform: rotate(-3deg);
+  }
+  .polaroid video, .polaroid img { display: block; width: 100%; aspect-ratio: 9 / 16; object-fit: cover; background: #efe7d8; }
+  .polaroid figcaption {
+    position: absolute; left: 0; right: 0; bottom: 12px;
+    font-family: var(--hand); font-size: 20px; color: var(--soft-ink);
+  }
+  .tape {
+    position: absolute; width: 110px; height: 30px; z-index: 2;
+    background: repeating-linear-gradient(45deg, rgba(255,255,255,.35) 0 6px, transparent 6px 12px), var(--tc, #f9c934cc);
+    opacity: .88;
+    clip-path: polygon(3% 0, 97% 4%, 100% 50%, 96% 100%, 2% 96%, 0 50%);
+  }
+  .tape.t1 { top: -12px; left: -26px; transform: rotate(-32deg); --tc: #f27aa9bb; }
+  .tape.t2 { top: -10px; right: -24px; transform: rotate(28deg); --tc: #5fa8e8bb; }
+
+  .d-rainbow { top: 14px; left: -4px; width: 120px; height: 68px; }
+  .d-flower-top { top: 34px; right: 6px; width: 54px; height: 54px; }
+  .d-flower-top2 { top: 120px; right: 80px; width: 40px; height: 40px; }
+  .side.l { right: calc(100% + 44px); }
+  .side.r { left: calc(100% + 44px); }
+
+  .scroll-hint { margin-top: 30px; font-size: 14px; color: var(--soft-ink); display: grid; justify-items: center; gap: 4px; }
+  .scroll-hint svg { width: 26px; height: 26px; animation: bob 1.6s ease-in-out infinite; filter: url(#crayon); }
+
+  /* ---------- Journal page ---------- */
+  .journal {
+    position: relative;
+    max-width: 640px; margin: 0 auto;
+    background: #fffdf6;
+    background-image:
+      linear-gradient(90deg, transparent 54px, #f3a3a8 54px 56px, transparent 56px),
+      repeating-linear-gradient(transparent 0 33px, var(--line) 33px 34px);
+    background-position: 0 0, 0 70px;
+    padding: 70px 28px 40px 76px;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 16px 32px rgba(90,60,20,.14);
+    --tilt: 1deg;
+  }
+  .journal::before {
+    content: ""; position: absolute; left: 18px; top: 26px; bottom: 26px; width: 18px;
+    background: radial-gradient(circle, var(--paper) 6px, rgba(0,0,0,.08) 7px, transparent 8px) 0 0 / 18px 46px repeat-y;
+  }
+  .journal .date-stamp {
+    position: absolute; top: 22px; right: 24px;
+    font-family: var(--hand); color: var(--soft-ink); font-size: 15px;
+  }
+  .journal h2 {
+    font-family: var(--hand); font-size: clamp(24px, 5.5vw, 32px); color: var(--blue);
+    line-height: 34px; margin-bottom: 0;
+  }
+  .journal p {
+    font-family: "Itim", var(--body); font-size: clamp(17px, 4.2vw, 20px);
+    line-height: 34px; color: #3d4a6b;
+  }
+  .journal .sign { text-align: right; font-family: var(--hand); color: var(--pink); margin-top: 8px; }
+  .hl { background: linear-gradient(transparent 55%, #f9c93488 55%, #f9c93488 90%, transparent 90%); padding: 0 2px; }
+
+  /* ---------- Section title ---------- */
+  .stitle { text-align: center; margin-bottom: 34px; }
+  .stitle h2 {
+    display: inline-block; position: relative;
+    font-family: var(--hand); font-weight: 400;
+    font-size: clamp(28px, 7vw, 42px); line-height: 1.2;
+  }
+  .stitle h2 svg { position: absolute; left: -4%; bottom: -12px; width: 108%; height: 18px; filter: url(#crayon); }
+  .stitle p { color: var(--soft-ink); margin-top: 14px; }
+
+  /* ---------- Info cards ---------- */
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .card {
+    position: relative; padding: 34px 18px 24px; text-align: center;
+    background: var(--bg);
+    box-shadow: 0 2px 3px rgba(0,0,0,.06), 0 14px 24px rgba(90,60,20,.14);
+    border-radius: 2px 2px 24px 2px;
+    min-height: 230px;
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+  }
+  .card::after {
+    content: ""; position: absolute; right: 0; bottom: 0; width: 26px; height: 26px;
+    background: linear-gradient(135deg, rgba(0,0,0,.08) 0 50%, var(--paper) 50%);
+    border-radius: 0 0 24px 0;
+  }
+  .card .tape { top: -14px; left: 50%; margin-left: -50px; width: 100px; transform: rotate(-4deg); }
+  .card .icon { width: 62px; height: 62px; filter: url(#crayon); margin-bottom: 4px; }
+  .card .label { font-family: var(--hand); font-size: 18px; color: var(--soft-ink); }
+  .card .big { font-family: "Baloo 2", var(--body); font-weight: 800; font-size: clamp(30px, 7vw, 38px); line-height: 1.05; }
+  .card .small { font-size: 15px; color: var(--soft-ink); }
+  .card.c1 { --bg: #ffe9a8; --tilt: -2.5deg; }
+  .card.c2 { --bg: #cfe8ff; --tilt: 1.8deg; }
+  .card.c3 { --bg: #ffd3e2; --tilt: -1.2deg; }
+  .card.c1 .big { color: #d9672b; }
+  .card.c2 .big { color: #2f72b8; }
+  .card.c3 .big { color: #c4417a; font-size: clamp(22px, 5.4vw, 26px); }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 40px; }
+  .btn {
+    --c: var(--blue);
+    position: relative; display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 22px; min-height: 48px;
+    font-family: var(--hand); font-size: 19px; color: #fff; text-decoration: none;
+    background: var(--c); border: 0; cursor: pointer;
+    border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+    box-shadow: 3px 4px 0 var(--ink);
+    transition: transform .15s, box-shadow .15s;
+  }
+  .btn:hover { transform: translate(-1px, -2px) rotate(-1deg); box-shadow: 4px 6px 0 var(--ink); }
+  .btn:active { transform: translate(2px, 3px); box-shadow: 1px 1px 0 var(--ink); }
+  .btn.green { --c: #5bb35a; }
+  .btn svg { width: 22px; height: 22px; }
+
+  /* ---------- Countdown ---------- */
+  .countdown { display: flex; justify-content: center; gap: clamp(10px, 3vw, 22px); flex-wrap: wrap; }
+  .cd {
+    width: clamp(70px, 19vw, 108px); aspect-ratio: 1;
+    display: grid; place-content: center; text-align: center;
+    background: #fffdf6;
+    border: 3px solid var(--c);
+    border-radius: 18px 26px 16px 24px / 24px 16px 26px 18px;
+    box-shadow: 4px 5px 0 var(--c);
+    transform: rotate(var(--r));
+  }
+  .cd b { font-family: "Paytone One", var(--body); font-weight: 400; font-size: clamp(28px, 7.5vw, 44px); line-height: 1; color: var(--c); }
+  .cd span { font-size: 13px; color: var(--soft-ink); margin-top: 4px; }
+  .cd:nth-child(1) { --c: var(--red); --r: -3deg; }
+  .cd:nth-child(2) { --c: var(--orange); --r: 2deg; }
+  .cd:nth-child(3) { --c: var(--green); --r: -1.5deg; }
+  .cd:nth-child(4) { --c: var(--purple); --r: 3deg; }
+  .cd-done { text-align: center; font-family: var(--hand); font-size: 26px; color: var(--red); }
+
+  /* ---------- Footer ---------- */
+  footer { text-align: center; padding: 30px 20px 70px; position: relative; }
+  .thanks { font-family: var(--hand); font-size: clamp(24px, 6vw, 34px); line-height: 1.35; }
+  .thanks .c { color: var(--pink); }
+  .foot-sub { color: var(--soft-ink); margin-top: 10px; font-size: 15px; }
+  .crayons { display: flex; justify-content: center; gap: 6px; margin-top: 26px; }
+  .crayons i {
+    width: 16px; height: 64px; background: var(--c); border-radius: 3px 3px 4px 4px; position: relative;
+    transform: rotate(var(--r)); box-shadow: inset -4px 0 0 rgba(0,0,0,.12);
+  }
+  .crayons i::before {
+    content: ""; position: absolute; top: -14px; left: 0; right: 0; height: 15px;
+    background: var(--c); clip-path: polygon(50% 0, 100% 100%, 0 100%); filter: brightness(.9);
+  }
+  .crayons i::after { content: ""; position: absolute; left: 0; right: 0; top: 18px; height: 22px; background: rgba(255,255,255,.35); }
+
+  canvas#confetti { position: fixed; inset: 0; pointer-events: none; z-index: 60; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 760px) {
+    section { padding: 88px 0 40px; }
+    .hero { padding-top: 100px; }
+    footer { padding-top: 96px; }
+    .d-rainbow { top: 10px; left: -6px; width: 104px; height: 58px; }
+    .d-flower-top { top: 14px; right: 0; width: 46px; height: 46px; }
+    .d-flower-top2 { top: 54px; right: 50px; width: 30px; height: 30px; }
+    .side { scale: .78; }
+    .side.l { right: calc(100% - 2px); }
+    .side.r { left: calc(100% - 2px); }
+    .cards { grid-template-columns: 1fr; gap: 30px; max-width: 360px; margin: 0 auto; }
+    .card { min-height: 0; }
+    .journal { padding: 64px 18px 32px 62px; background-image:
+      linear-gradient(90deg, transparent 44px, #f3a3a8 44px 46px, transparent 46px),
+      repeating-linear-gradient(transparent 0 33px, var(--line) 33px 34px); }
+    .journal::before { left: 12px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body class="locked">
+
+<!-- Shared SVG: crayon filter + doodle symbols -->
+<svg class="defs" aria-hidden="true">
+  <defs>
+    <filter id="crayon" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3" result="warp" />
+      <feDisplacementMap in="SourceGraphic" in2="warp" scale="3.5" xChannelSelector="R" yChannelSelector="G" result="wobbly" />
+      <feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" seed="8" result="grain" />
+      <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  3.2 0 0 0 -0.85" result="grainAlpha" />
+      <feComposite in="wobbly" in2="grainAlpha" operator="in" />
+    </filter>
+  </defs>
+  <symbol id="d-rainbow" viewBox="0 0 160 90">
+    <g fill="none" stroke-linecap="round" stroke-width="9">
+      <path d="M12 84 A68 68 0 0 1 148 84" stroke="#e8505b" />
+      <path d="M24 84 A56 56 0 0 1 136 84" stroke="#f7944d" />
+      <path d="M36 84 A44 44 0 0 1 124 84" stroke="#f9c934" />
+      <path d="M48 84 A32 32 0 0 1 112 84" stroke="#7cc77a" />
+      <path d="M60 84 A20 20 0 0 1 100 84" stroke="#5fa8e8" />
+    </g>
+  </symbol>
+  <symbol id="d-star" viewBox="0 0 60 60">
+    <path d="M30 4 L37 22 L56 23 L41 35 L46 54 L30 43 L14 54 L19 35 L4 23 L23 22 Z" fill="currentColor" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
+  </symbol>
+  <symbol id="d-burst" viewBox="0 0 60 60">
+    <g stroke="currentColor" stroke-width="5" stroke-linecap="round">
+      <path d="M30 4 V56 M4 30 H56 M11 11 L49 49 M49 11 L11 49" />
+    </g>
+  </symbol>
+  <symbol id="d-flower" viewBox="0 0 70 70">
+    <g fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round">
+      <ellipse cx="35" cy="15" rx="9" ry="13" />
+      <ellipse cx="35" cy="55" rx="9" ry="13" />
+      <ellipse cx="15" cy="35" rx="13" ry="9" />
+      <ellipse cx="55" cy="35" rx="13" ry="9" />
+      <ellipse cx="21" cy="21" rx="9" ry="12" transform="rotate(-45 21 21)" />
+      <ellipse cx="49" cy="49" rx="9" ry="12" transform="rotate(-45 49 49)" />
+      <ellipse cx="49" cy="21" rx="9" ry="12" transform="rotate(45 49 21)" />
+      <ellipse cx="21" cy="49" rx="9" ry="12" transform="rotate(45 21 49)" />
+    </g>
+    <circle cx="35" cy="35" r="9" fill="#f9c934" />
+  </symbol>
+  <symbol id="d-heart" viewBox="0 0 60 54">
+    <path d="M30 50 C8 34 2 24 4 15 C6 5 20 1 30 14 C40 1 54 5 56 15 C58 24 52 34 30 50 Z" fill="currentColor" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
+  </symbol>
+  <symbol id="d-bolt" viewBox="0 0 70 80">
+    <path d="M8 6 L44 22 L30 30 L64 52 L56 74 L50 56 L24 42 L36 34 Z" fill="currentColor" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
+  </symbol>
+  <symbol id="d-swirl" viewBox="0 0 80 40">
+    <path d="M4 30 C14 4 34 4 30 22 C26 36 12 26 22 14 C32 2 52 6 50 24 C48 38 66 34 76 10" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" />
+  </symbol>
+  <symbol id="d-note" viewBox="0 0 50 60">
+    <g fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round">
+      <path d="M16 46 V8 L42 4 V40" />
+      <ellipse cx="10" cy="47" rx="8" ry="6" fill="currentColor" />
+      <ellipse cx="36" cy="41" rx="8" ry="6" fill="currentColor" />
+    </g>
+  </symbol>
+  <symbol id="d-sun" viewBox="0 0 80 80">
+    <circle cx="40" cy="40" r="16" fill="#f9c934" stroke="#f7944d" stroke-width="4" />
+    <g stroke="#f7944d" stroke-width="5" stroke-linecap="round">
+      <path d="M40 6 V16 M40 64 V74 M6 40 H16 M64 40 H74 M16 16 L23 23 M57 57 L64 64 M64 16 L57 23 M16 64 L23 57" />
+    </g>
+  </symbol>
+  <symbol id="d-cloud" viewBox="0 0 100 56">
+    <path d="M22 50 C6 50 4 30 20 28 C20 12 42 8 48 22 C54 8 78 12 76 28 C94 28 96 50 78 50 Z" fill="#fff" stroke="#8fbde8" stroke-width="4" stroke-linejoin="round" />
+  </symbol>
+  <symbol id="d-balloon" viewBox="0 0 50 100">
+    <ellipse cx="25" cy="28" rx="20" ry="25" fill="currentColor" />
+    <path d="M22 53 L28 53 L25 58 Z" fill="currentColor" />
+    <path d="M25 58 C18 70 32 78 24 98" fill="none" stroke="#6b6878" stroke-width="2.5" stroke-linecap="round" />
+    <path d="M14 18 C16 12 20 9 24 8" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".7" />
+  </symbol>
+  <symbol id="d-squiggle" viewBox="0 0 300 20">
+    <path d="M4 12 C30 2 50 20 80 10 S130 2 160 11 S220 20 250 9 S290 6 296 10" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" />
+  </symbol>
+  <symbol id="d-cap" viewBox="0 0 80 64">
+    <path d="M40 6 L76 22 L40 38 L4 22 Z" fill="#3b3a4a" stroke="#3b3a4a" stroke-width="3" stroke-linejoin="round" />
+    <path d="M18 29 V44 C18 52 62 52 62 44 V29 L40 38 Z" fill="#3b3a4a" />
+    <path d="M68 25 V44" stroke="#f9c934" stroke-width="4" stroke-linecap="round" />
+    <circle cx="68" cy="48" r="5" fill="#f9c934" />
+  </symbol>
+</svg>
+
+<!-- Envelope intro -->
+<div class="intro" id="intro" role="button" tabindex="0" aria-label="Mở thiệp mời">
+  <div class="intro-inner">
+    <p class="intro-title">Có một lá thư gửi <span data-guest>bạn</span> nè! ✉️</p>
+    <div class="envelope">
+      <div class="env-back"></div>
+      <div class="env-letter">
+        <span class="to" id="letterTo" hidden>Gửi <b data-guest></b> 💌</span>
+        <span>Bạn được mời! 🎓</span>
+      </div>
+      <div class="env-front"></div>
+      <div class="env-flap"></div>
+      <svg class="env-seal" viewBox="0 0 60 54" style="color: var(--red); filter: url(#crayon)"><use href="#d-heart" /></svg>
+    </div>
+    <p class="intro-hint">👆 Chạm để mở thiệp</p>
+  </div>
+</div>
+
+<canvas id="confetti"></canvas>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="doodle float d-rainbow" style="--r: -8deg"><svg><use href="#d-rainbow" /></svg></div>
+    <div class="doodle wiggle d-flower-top" style="color: var(--purple)"><svg><use href="#d-flower" /></svg></div>
+    <div class="doodle float d-flower-top2" style="color: var(--pink); --r: 12deg; animation-delay: -2s"><svg><use href="#d-flower" /></svg></div>
+
+    <p class="eyebrow reveal">✏️ Trân trọng kính mời <span data-guest>bạn</span> đến dự</p>
+    <h1 class="ransom reveal" id="ransom" aria-label="Lễ Tốt Nghiệp">Lễ Tốt Nghiệp</h1>
+    <p class="eyebrow reveal">của</p>
+    <div class="name reveal">
+      <span data-bind="name"></span>
+      <svg viewBox="0 0 300 20" preserveAspectRatio="none" style="color: var(--orange)"><use href="#d-squiggle" /></svg>
+    </div>
+    <p class="eyebrow reveal" style="margin-top: 18px">🎓 Class of 2026 · ĐH Khoa học Tự nhiên</p>
+
+    <div class="polaroid-wrap reveal">
+      <figure class="polaroid">
+        <span class="tape t1"></span>
+        <span class="tape t2"></span>
+        <video id="gradVideo" src="assets/grad.mp4" poster="assets/poster.png" muted loop playsinline preload="metadata"></video>
+        <figcaption data-bind="caption"></figcaption>
+      </figure>
+      <div class="doodle wiggle side r" style="top: 4%; width: 44px; height: 50px; color: var(--yellow); --r: -10deg"><svg><use href="#d-bolt" /></svg></div>
+      <div class="doodle spin side r" style="top: 36%; width: 44px; height: 44px; color: var(--blue)"><svg><use href="#d-burst" /></svg></div>
+      <div class="doodle float side r" style="top: 68%; width: 36px; height: 44px; color: var(--green); animation-delay: -3s"><svg><use href="#d-note" /></svg></div>
+      <div class="doodle float side l" style="top: 14%; width: 42px; height: 42px; color: var(--yellow); --r: 10deg; animation-delay: -1s"><svg><use href="#d-star" /></svg></div>
+      <div class="doodle wiggle side l" style="top: 46%; width: 44px; height: 40px; color: var(--pink)"><svg><use href="#d-heart" /></svg></div>
+      <div class="doodle wiggle side l" style="top: 68%; width: 60px; height: 36px; color: var(--purple)"><svg><use href="#d-swirl" /></svg></div>
+    </div>
+
+    <div class="scroll-hint reveal">
+      Kéo xuống xem thêm
+      <svg viewBox="0 0 30 30" fill="none" stroke="#5fa8e8" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10 L15 20 L24 10" /></svg>
+    </div>
+  </section>
+
+  <!-- JOURNAL -->
+  <section>
+    <div class="doodle float" style="top: 4px; right: 4%; width: 90px; height: 50px; --r: 0deg"><svg><use href="#d-cloud" /></svg></div>
+    <div class="doodle wiggle" style="top: 12px; left: 6%; width: 40px; height: 36px; color: var(--pink)"><svg><use href="#d-heart" /></svg></div>
+
+    <article class="journal reveal">
+      <span class="date-stamp" data-bind="journalDate"></span>
+      <h2>Trang nhật ký cuối 📖</h2>
+      <p>Ngày còn bé, mình từng đội chiếc mũ tốt nghiệp bé xíu và ước <span class="hl">một ngày được làm "người lớn"</span>.</p>
+      <p>Rồi bốn năm ở Khoa học Tự nhiên trôi qua với những buổi lab, những mùa thi, những deadline chạy hụt hơi và thật nhiều kỷ niệm.</p>
+      <p>Giờ đứa trẻ năm ấy sắp nhận tấm bằng cử nhân thật rồi, và mình rất muốn có <span class="hl">bạn ở bên</span> trong ngày vui này.</p>
+      <p>Đến chung vui cùng mình nhé! 💛</p>
+      <p class="sign">— <span data-bind="name"></span> ✿</p>
+    </article>
+  </section>
+
+  <!-- DETAILS -->
+  <section id="details">
+    <div class="doodle float" style="top: 6px; left: 4%; width: 60px; height: 60px; --r: 0deg"><svg><use href="#d-sun" /></svg></div>
+    <div class="doodle float" style="top: 2px; right: 5%; width: 32px; height: 64px; color: var(--red); animation-delay: -2s"><svg><use href="#d-balloon" /></svg></div>
+    <div class="doodle float" style="top: 16px; right: calc(5% + 34px); width: 26px; height: 52px; color: var(--blue); animation-delay: -4s"><svg><use href="#d-balloon" /></svg></div>
+
+    <div class="stitle reveal">
+      <h2>Hẹn gặp bạn nhé!
+        <svg viewBox="0 0 300 20" preserveAspectRatio="none" style="color: var(--green)"><use href="#d-squiggle" /></svg>
+      </h2>
+    </div>
+
+    <div class="cards">
+      <div class="card c1 reveal">
+        <span class="tape" style="--tc: #f27aa9bb"></span>
+        <svg class="icon" viewBox="0 0 64 64" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="8" y="12" width="48" height="44" rx="6" fill="#fff" stroke="#e8505b" stroke-width="4" />
+          <path d="M8 24 H56" stroke="#e8505b" stroke-width="4" />
+          <path d="M20 6 V16 M44 6 V16" stroke="#3b3a4a" stroke-width="4" />
+          <path d="M24 38 L30 44 L42 32" stroke="#7cc77a" stroke-width="5" />
+        </svg>
+        <span class="label">Ngày</span>
+        <span class="big" data-bind="dateShort"></span>
+        <span class="small" data-bind="dateLong"></span>
+      </div>
+
+      <div class="card c2 reveal">
+        <span class="tape" style="--tc: #f9c934cc"></span>
+        <svg class="icon" viewBox="0 0 64 64" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="32" cy="34" r="24" fill="#fff" stroke="#5fa8e8" stroke-width="4" />
+          <path d="M32 20 V34 L42 40" stroke="#3b3a4a" stroke-width="4" />
+          <path d="M12 12 L20 6 M52 12 L44 6" stroke="#f7944d" stroke-width="4" />
+        </svg>
+        <span class="label">Giờ</span>
+        <span class="big" data-bind="time"></span>
+        <span class="small" data-bind="timeNote"></span>
+      </div>
+
+      <div class="card c3 reveal">
+        <span class="tape" style="--tc: #7cc77acc"></span>
+        <svg class="icon" viewBox="0 0 64 64" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M32 58 C18 42 12 32 12 24 A20 20 0 0 1 52 24 C52 32 46 42 32 58 Z" fill="#fff" stroke="#c4417a" stroke-width="4" />
+          <circle cx="32" cy="24" r="7" fill="#f9c934" stroke="#f7944d" stroke-width="3" />
+        </svg>
+        <span class="label">Địa điểm</span>
+        <span class="big" data-bind="venue"></span>
+        <span class="small" data-bind="address"></span>
+      </div>
+    </div>
+
+    <div class="actions reveal">
+      <a class="btn" id="mapBtn" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21 C7 15 5 12 5 9 A7 7 0 0 1 19 9 C19 12 17 15 12 21 Z" /><circle cx="12" cy="9" r="2.5" /></svg>
+        Chỉ đường
+      </a>
+    </div>
+  </section>
+
+  <!-- COUNTDOWN -->
+  <section>
+    <div class="doodle wiggle" style="top: 14px; right: 6%; width: 38px; height: 38px; color: var(--pink); --r: 8deg"><svg><use href="#d-star" /></svg></div>
+    <div class="doodle float" style="top: 8px; left: 5%; width: 62px; height: 50px; --r: -10deg"><svg><use href="#d-cap" /></svg></div>
+
+    <div class="stitle reveal">
+      <h2>Còn bao lâu nữa nhỉ? ⏰
+        <svg viewBox="0 0 300 20" preserveAspectRatio="none" style="color: var(--purple)"><use href="#d-squiggle" /></svg>
+      </h2>
+    </div>
+    <div class="countdown reveal" id="countdown">
+      <div class="cd"><b data-cd="d">0</b><span>ngày</span></div>
+      <div class="cd"><b data-cd="h">0</b><span>giờ</span></div>
+      <div class="cd"><b data-cd="m">0</b><span>phút</span></div>
+      <div class="cd"><b data-cd="s">0</b><span>giây</span></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="doodle wiggle" style="top: 0; left: 8%; width: 40px; height: 36px; color: var(--red)"><svg><use href="#d-heart" /></svg></div>
+    <div class="doodle float" style="top: 10px; right: 8%; width: 46px; height: 46px; color: var(--purple)"><svg><use href="#d-flower" /></svg></div>
+    <p class="thanks reveal">Sự có mặt của <span data-guest>bạn</span> là<br /><span class="c">món quà ý nghĩa nhất</span> với mình 💛</p>
+    <p class="foot-sub reveal" data-bind="contact"></p>
+    <div class="crayons reveal" aria-hidden="true">
+      <i style="--c: #e8505b; --r: -8deg"></i><i style="--c: #f7944d; --r: -3deg"></i><i style="--c: #f9c934; --r: 2deg"></i><i style="--c: #7cc77a; --r: -2deg"></i><i style="--c: #5fa8e8; --r: 4deg"></i><i style="--c: #a77ad8; --r: 9deg"></i>
+    </div>
+  </footer>
+</main>
+
+<script>
+  // ✏️ Sửa thông tin thiệp ở đây
+  const INVITE = {
+    name: "Việt Tú",
+    caption: "Class of 2026 · HCMUS",
+    start: "2026-12-06T12:00:00+07:00",
+    end: "2026-12-06T14:00:00+07:00",
+    timeNote: "12 giờ trưa",
+    venue: "ĐH Khoa học Tự nhiên",
+    address: "ĐHQG TP.HCM · 227 Nguyễn Văn Cừ, Phường Chợ Quán, TP.HCM",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent("Trường Đại học Khoa học Tự nhiên, 227 Nguyễn Văn Cừ, TP.HCM"),
+    contact: "Nhắn mình một tiếng nếu bạn đến được nhé!",
+  };
+
+  const start = new Date(INVITE.start);
+  const end = new Date(INVITE.end);
+  const tz = "Asia/Ho_Chi_Minh";
+  const pad = (n) => String(n).padStart(2, "0");
+  const fmt = (opts) => new Intl.DateTimeFormat("vi-VN", { timeZone: tz, ...opts }).format(start);
+
+  const bindings = {
+    name: INVITE.name,
+    caption: INVITE.caption,
+    dateShort: fmt({ day: "2-digit", month: "2-digit", year: "numeric" }),
+    dateLong: fmt({ weekday: "long" }).replace(/^./, (c) => c.toUpperCase()),
+    journalDate: fmt({ day: "numeric", month: "numeric" }).replace(/\//g, " · "),
+    time: fmt({ hour: "2-digit", minute: "2-digit", hour12: false }),
+    timeNote: INVITE.timeNote,
+    venue: INVITE.venue,
+    address: INVITE.address,
+    contact: INVITE.contact,
+  };
+  document.querySelectorAll("[data-bind]").forEach((el) => { el.textContent = bindings[el.dataset.bind] ?? ""; });
+  document.title = `Thiệp mời Lễ Tốt Nghiệp của ${INVITE.name} 🎓`;
+
+  // Guest name from URL: ?ten=Minh Anh (also ?to=, ?name=, or bare ?Minh)
+  (() => {
+    const params = new URLSearchParams(location.search);
+    let guest = params.get("ten") || params.get("to") || params.get("name") || "";
+    if (!guest && location.search.length > 1 && !location.search.includes("=")) {
+      try { guest = decodeURIComponent(location.search.slice(1).replace(/\+/g, " ")); } catch { guest = ""; }
+    }
+    guest = guest.normalize("NFC").replace(/\s+/g, " ").trim().slice(0, 40);
+    if (!guest) return;
+    document.querySelectorAll("[data-guest]").forEach((el) => { el.textContent = guest; });
+    document.getElementById("letterTo").hidden = false;
+    document.title = `Gửi ${guest} · ${document.title}`;
+  })();
+
+  const mapHref = INVITE.mapUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${INVITE.venue}, ${INVITE.address}`)}`;
+  document.getElementById("mapBtn").href = mapHref;
+
+  // Ransom-note title
+  (() => {
+    const el = document.getElementById("ransom");
+    const colors = [
+      ["#e8505b", "#fff"], ["#f9c934", "#3b3a4a"], ["#5fa8e8", "#fff"], ["#7cc77a", "#fff"],
+      ["#a77ad8", "#fff"], ["#f27aa9", "#fff"], ["#fffdf6", "#e8505b"], ["#3b3a4a", "#f9c934"], ["#ffd3e2", "#c4417a"], ["#cfe8ff", "#2f72b8"],
+    ];
+    const fonts = ['"Paytone One"', '"Baloo 2"', '"Sriracha"', '"Itim"', '"Mali"'];
+    const words = el.textContent.trim().split(/\s+/);
+    el.textContent = "";
+    let i = 0;
+    words.forEach((w) => {
+      const word = document.createElement("span");
+      word.className = "word";
+      [...w.toUpperCase()].forEach((ch) => {
+        const s = document.createElement("span");
+        const [bg, fg] = colors[(i * 7 + 3) % colors.length];
+        s.className = "ch";
+        s.textContent = ch;
+        s.setAttribute("aria-hidden", "true");
+        s.style.background = bg;
+        s.style.color = fg;
+        s.style.fontFamily = fonts[(i * 3 + 1) % fonts.length];
+        s.style.fontWeight = "800";
+        s.style.transform = `rotate(${((i * 37) % 15) - 7}deg) translateY(${((i * 13) % 7) - 3}px)`;
+        s.style.borderRadius = ["3px", "8px 2px 6px 3px", "50% 40% 45% 50%", "2px 10px 3px 8px"][i % 4];
+        word.appendChild(s);
+        i++;
+      });
+      el.appendChild(word);
+    });
+  })();
+
+  // Countdown
+  (() => {
+    const box = document.getElementById("countdown");
+    const els = Object.fromEntries([...box.querySelectorAll("[data-cd]")].map((e) => [e.dataset.cd, e]));
+    const tick = () => {
+      const diff = start - Date.now();
+      if (diff <= 0) {
+        box.outerHTML = `<p class="cd-done">${Date.now() < end ? "🎉 Buổi lễ đang diễn ra! 🎉" : "🎓 Mình tốt nghiệp rồi! Cảm ơn mọi người 💛"}</p>`;
+        clearInterval(timer);
+        return;
+      }
+      els.d.textContent = Math.floor(diff / 864e5);
+      els.h.textContent = pad(Math.floor(diff / 36e5) % 24);
+      els.m.textContent = pad(Math.floor(diff / 6e4) % 60);
+      els.s.textContent = pad(Math.floor(diff / 1e3) % 60);
+    };
+    const timer = setInterval(tick, 1000);
+    tick();
+  })();
+
+  // Scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+
+  // Confetti
+  const confetti = (() => {
+    const cv = document.getElementById("confetti");
+    const ctx = cv.getContext("2d");
+    const palette = ["#e8505b", "#f7944d", "#f9c934", "#7cc77a", "#5fa8e8", "#a77ad8", "#f27aa9"];
+    let parts = [];
+    let raf;
+    const resize = () => {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      cv.width = innerWidth * dpr; cv.height = innerHeight * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+    addEventListener("resize", resize);
+    resize();
+    const draw = () => {
+      ctx.clearRect(0, 0, innerWidth, innerHeight);
+      parts.forEach((p) => {
+        p.vy += 0.12; p.vx *= 0.99; p.x += p.vx; p.y += p.vy; p.rot += p.vr; p.life--;
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+        ctx.globalAlpha = Math.max(0, Math.min(1, p.life / 40));
+        ctx.fillStyle = p.c;
+        if (p.shape === 0) ctx.fillRect(-p.s / 2, -p.s / 4, p.s, p.s / 2);
+        else if (p.shape === 1) { ctx.beginPath(); ctx.arc(0, 0, p.s / 3, 0, Math.PI * 2); ctx.fill(); }
+        else { ctx.lineWidth = 3; ctx.lineCap = "round"; ctx.strokeStyle = p.c; ctx.beginPath(); ctx.moveTo(-p.s / 2, 0); ctx.quadraticCurveTo(0, -p.s / 2, p.s / 2, 0); ctx.stroke(); }
+        ctx.restore();
+      });
+      parts = parts.filter((p) => p.life > 0 && p.y < innerHeight + 40);
+      if (parts.length) raf = requestAnimationFrame(draw);
+      else ctx.clearRect(0, 0, innerWidth, innerHeight);
+    };
+    return () => {
+      if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      const n = innerWidth < 600 ? 110 : 180;
+      for (let i = 0; i < n; i++) {
+        const fromLeft = i % 2 === 0;
+        parts.push({
+          x: fromLeft ? -10 : innerWidth + 10, y: innerHeight * (0.45 + Math.random() * 0.3),
+          vx: (fromLeft ? 1 : -1) * (4 + Math.random() * 8), vy: -(7 + Math.random() * 9),
+          s: 8 + Math.random() * 9, rot: Math.random() * 6, vr: (Math.random() - 0.5) * 0.3,
+          c: palette[i % palette.length], shape: i % 3, life: 160 + Math.random() * 80,
+        });
+      }
+      cancelAnimationFrame(raf);
+      draw();
+    };
+  })();
+
+  // Open envelope
+  const intro = document.getElementById("intro");
+  const video = document.getElementById("gradVideo");
+  const openInvite = () => {
+    if (intro.classList.contains("open")) return;
+    intro.classList.add("open");
+    video.play().catch(() => {});
+    setTimeout(() => {
+      document.body.classList.remove("locked");
+      confetti();
+    }, 900);
+  };
+  intro.addEventListener("click", openInvite);
+  intro.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openInvite(); } });
+</script>
+</body>
+</html>
